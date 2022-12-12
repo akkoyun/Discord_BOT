@@ -27,7 +27,7 @@ async def on_ready():
 		for Message in Kafka_RAW_Consumer:
 
 			# handle Message.
-			Kafka_Message = Schema.IoT_Data_Pack_Model(**json.loads(Message.value.decode()))
+#			Kafka_Message = Schema.IoT_Data_Pack_Model(**json.loads(Message.value.decode()))
 
 			# Handle Headers
 			Command = Message.headers[0][1].decode('ASCII')
@@ -40,8 +40,6 @@ async def on_ready():
 
 			# Commit Message
 			Kafka_RAW_Consumer.commit()
-
-			Discord_Message()
 
 			print("--------------------------------------------------------------------------------")
 
