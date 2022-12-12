@@ -34,12 +34,9 @@ async def on_ready():
 			Device_Time = Message.headers[2][1].decode('ASCII')
 			Device_IP = Message.headers[3][1].decode('ASCII')
 
-			Message = "New Data Pack from ", Device_ID
+			Message = "New Data Pack from " + str(Device_ID)
 
 			await channel.send(Message)
-
-			# Print LOG
-			log_functions.Log_Kafka_Header(Command, Device_ID, Device_IP, Device_Time, Message.topic, Message.partition, Message.offset)
 
 			# Commit Message
 			Kafka_RAW_Consumer.commit()
