@@ -26,7 +26,7 @@ async def on_ready():
 		for Message in Kafka_RAW_Consumer:
 
 			# handle Message.
-			Kafka_Message = Schema.IoT_Data_Pack_Model(**json.loads(Message.value.decode()))
+			#Kafka_Message = Schema.IoT_Data_Pack_Model(**json.loads(Message.value.decode()))
 
 			# Handle Headers
 			Command = Message.headers[0][1].decode('ASCII')
@@ -34,7 +34,7 @@ async def on_ready():
 			Device_Time = Message.headers[2][1].decode('ASCII')
 			Device_IP = Message.headers[3][1].decode('ASCII')
 
-			Message = str(Device_ID) + " kodlu cihazdan veri geldi. \n Komut : " + str(Command) + " (" + str(Device_Time) + ") \n" + str(Kafka_Message)
+			Message = str(Device_ID) + " kodlu cihazdan veri geldi. \n Komut : " + str(Command) + " (" + str(Device_Time) + ") \n" + str(Message.value)
 
 			await channel.send(Message)
 
