@@ -22,7 +22,7 @@ async def on_ready():
 # Kafka Consumer
 Kafka_RAW_Consumer = KafkaConsumer('RAW.Discord', bootstrap_servers="165.227.154.147:9092", group_id="Data_Consumer", auto_offset_reset='earliest', enable_auto_commit=False)
 
-def Discord_Control():
+async def Discord_Control():
 
 	try:
 
