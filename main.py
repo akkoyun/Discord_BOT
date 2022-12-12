@@ -21,19 +21,15 @@ async def Discord_Message():
 	channel = client.get_channel(1051844419105607781)
 	await channel.send('Boot')
 
-
-# Kafka Consumer
-Kafka_RAW_Consumer = KafkaConsumer('RAW.Discord', bootstrap_servers="165.227.154.147:9092", group_id="Data_Consumer", auto_offset_reset='earliest', enable_auto_commit=False)
-
-def Discord_Control():
+	# Kafka Consumer
+	Kafka_RAW_Consumer = KafkaConsumer('RAW.Discord', bootstrap_servers="165.227.154.147:9092", group_id="Data_Consumer", auto_offset_reset='earliest', enable_auto_commit=False)
 
 	try:
-
 
 		for Message in Kafka_RAW_Consumer:
 
 			# handle Message.
-			#Kafka_Message = Schema.IoT_Data_Pack_Model(**json.loads(Message.value.decode()))
+			Kafka_Message = Schema.IoT_Data_Pack_Model(**json.loads(Message.value.decode()))
 
 			# Handle Headers
 			Command = Message.headers[0][1].decode('ASCII')
@@ -51,13 +47,9 @@ def Discord_Control():
 
 			print("--------------------------------------------------------------------------------")
 
-			client.run(TOKEN)
-
 	finally:
 		
 		print("Error Accured !!")
 
-
-# Handle All Message in Topic
-Discord_Control()
+client.run(TOKEN)
 
