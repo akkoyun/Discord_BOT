@@ -34,7 +34,7 @@ async def on_ready():
 			Device_Time = Message.headers[2][1].decode('ASCII')
 			Device_IP = Message.headers[3][1].decode('ASCII')
 
-			Message = str(Device_ID) + " kodlu cihazdan veri geldi. \nKomut : \u001b[0;31m" + str(Command) + "\u001b[0;37m (" + str(Device_Time) + ") \n```JSON" + str(Message.value) + "```"
+			Message = str(Device_ID) + " kodlu cihazdan veri geldi. \nKomut : \u001b[0;31m" + str(Command) + "\u001b[0;37m (" + str(Device_Time) + ") \n```JSON" + str(Message.value.decode()) + "```"
 
 			await channel.send(Message)
 
