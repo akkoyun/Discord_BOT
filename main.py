@@ -42,7 +42,7 @@ async def on_ready():
 			Kafka_RAW_Consumer.commit()
 
 			# Log
-			print("Message send to discord. Device ID : ", Device_ID)
+			print("Message send to discord. \n", Message)
 
 	finally:
 		
