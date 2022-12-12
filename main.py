@@ -17,7 +17,6 @@ client = discord.Client(intents=discord.Intents.default())
 async def on_ready():
 
 	channel = client.get_channel(1051844419105607781)
-	await channel.send('Boot')
 
 	# Kafka Consumer
 	Kafka_RAW_Consumer = KafkaConsumer('RAW.Discord', bootstrap_servers="165.227.154.147:9092", group_id="Data_Consumer", auto_offset_reset='earliest', enable_auto_commit=False)
@@ -34,6 +33,8 @@ async def on_ready():
 			Device_ID = Message.headers[1][1].decode('ASCII')
 			Device_Time = Message.headers[2][1].decode('ASCII')
 			Device_IP = Message.headers[3][1].decode('ASCII')
+
+			await channel.send('New Pack from ', Device_ID, ' with ', Command)
 
 			# Print LOG
 			log_functions.Log_Kafka_Header(Command, Device_ID, Device_IP, Device_Time, Message.topic, Message.partition, Message.offset)
