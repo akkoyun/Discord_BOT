@@ -52,7 +52,7 @@ def Discord_Control():
 
 	finally:
 		
-#		print("Error Accured !!")
+		print("Error Accured !!")
 
 
 # Handle All Message in Topic
