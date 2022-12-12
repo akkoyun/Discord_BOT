@@ -17,7 +17,7 @@ client = discord.Client(intents=discord.Intents.default())
 async def on_ready():
 	print(f'{client.user} has connected to Discord!')
 	channel = client.get_channel(1051844419105607781)
-	channel.send('test')
+	await channel.send('test')
 
 client.run(TOKEN)
 
