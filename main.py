@@ -19,41 +19,41 @@ async def on_ready():
 
 client.run(TOKEN)
 
-#channel = client.get_channel(1051844419105607781)
-#channel.send('test')
+channel = client.get_channel(1051844419105607781)
+channel.send('test')
 
 # Kafka Consumer
-Kafka_RAW_Consumer = KafkaConsumer('RAW.Discord', bootstrap_servers="165.227.154.147:9092", group_id="Data_Consumer", auto_offset_reset='earliest', enable_auto_commit=False)
+#Kafka_RAW_Consumer = KafkaConsumer('RAW.Discord', bootstrap_servers="165.227.154.147:9092", group_id="Data_Consumer", auto_offset_reset='earliest', enable_auto_commit=False)
 
-def Discord_Control():
+#def Discord_Control():
 
-	try:
+#	try:
 
-		for Message in Kafka_RAW_Consumer:
+#		for Message in Kafka_RAW_Consumer:
 
 			# handle Message.
-			Kafka_Message = Schema.IoT_Data_Pack_Model(**json.loads(Message.value.decode()))
+#			Kafka_Message = Schema.IoT_Data_Pack_Model(**json.loads(Message.value.decode()))
 
 			# Handle Headers
-			Command = Message.headers[0][1].decode('ASCII')
-			Device_ID = Message.headers[1][1].decode('ASCII')
-			Device_Time = Message.headers[2][1].decode('ASCII')
-			Device_IP = Message.headers[3][1].decode('ASCII')
+#			Command = Message.headers[0][1].decode('ASCII')
+#			Device_ID = Message.headers[1][1].decode('ASCII')
+#			Device_Time = Message.headers[2][1].decode('ASCII')
+#			Device_IP = Message.headers[3][1].decode('ASCII')
 
 			# Print LOG
-			log_functions.Log_Kafka_Header(Command, Device_ID, Device_IP, Device_Time, Message.topic, Message.partition, Message.offset)
+#			log_functions.Log_Kafka_Header(Command, Device_ID, Device_IP, Device_Time, Message.topic, Message.partition, Message.offset)
 
 			# Commit Message
-			Kafka_RAW_Consumer.commit()
+#			Kafka_RAW_Consumer.commit()
 
-			print("--------------------------------------------------------------------------------")
+#			print("--------------------------------------------------------------------------------")
 
 
-	finally:
+#	finally:
 		
-		print("Error Accured !!")
+#		print("Error Accured !!")
 
 
 # Handle All Message in Topic
-Discord_Control()
+#Discord_Control()
 
