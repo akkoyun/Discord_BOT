@@ -16,20 +16,20 @@ client = discord.Client(intents=discord.Intents.default())
 @client.event
 async def on_ready():
 	print(f'{client.user} has connected to Discord!')
-	channel = client.get_channel(1051844419105607781)
-	await channel.send('test')
 
-client.run(TOKEN)
 
 
 # Kafka Consumer
-#Kafka_RAW_Consumer = KafkaConsumer('RAW.Discord', bootstrap_servers="165.227.154.147:9092", group_id="Data_Consumer", auto_offset_reset='earliest', enable_auto_commit=False)
+Kafka_RAW_Consumer = KafkaConsumer('RAW.Discord', bootstrap_servers="165.227.154.147:9092", group_id="Data_Consumer", auto_offset_reset='earliest', enable_auto_commit=False)
 
-#def Discord_Control():
+def Discord_Control():
 
-#	try:
+	try:
 
-#		for Message in Kafka_RAW_Consumer:
+		for Message in Kafka_RAW_Consumer:
+
+			channel = client.get_channel(1051844419105607781)
+			await channel.send('test')
 
 			# handle Message.
 #			Kafka_Message = Schema.IoT_Data_Pack_Model(**json.loads(Message.value.decode()))
@@ -48,8 +48,9 @@ client.run(TOKEN)
 
 #			print("--------------------------------------------------------------------------------")
 
+			client.run(TOKEN)
 
-#	finally:
+	finally:
 		
 #		print("Error Accured !!")
 
