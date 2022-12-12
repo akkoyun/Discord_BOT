@@ -26,27 +26,27 @@ async def Discord_Control():
 
 	try:
 
+		channel = client.get_channel(1051844419105607781)
+		await channel.send('Boot')
+
 		for Message in Kafka_RAW_Consumer:
 
-			channel = client.get_channel(1051844419105607781)
-			await channel.send('test')
-
 			# handle Message.
-#			Kafka_Message = Schema.IoT_Data_Pack_Model(**json.loads(Message.value.decode()))
+			Kafka_Message = Schema.IoT_Data_Pack_Model(**json.loads(Message.value.decode()))
 
 			# Handle Headers
-#			Command = Message.headers[0][1].decode('ASCII')
-#			Device_ID = Message.headers[1][1].decode('ASCII')
-#			Device_Time = Message.headers[2][1].decode('ASCII')
-#			Device_IP = Message.headers[3][1].decode('ASCII')
+			Command = Message.headers[0][1].decode('ASCII')
+			Device_ID = Message.headers[1][1].decode('ASCII')
+			Device_Time = Message.headers[2][1].decode('ASCII')
+			Device_IP = Message.headers[3][1].decode('ASCII')
 
 			# Print LOG
-#			log_functions.Log_Kafka_Header(Command, Device_ID, Device_IP, Device_Time, Message.topic, Message.partition, Message.offset)
+			log_functions.Log_Kafka_Header(Command, Device_ID, Device_IP, Device_Time, Message.topic, Message.partition, Message.offset)
 
 			# Commit Message
-#			Kafka_RAW_Consumer.commit()
+			Kafka_RAW_Consumer.commit()
 
-#			print("--------------------------------------------------------------------------------")
+			print("--------------------------------------------------------------------------------")
 
 			client.run(TOKEN)
 
