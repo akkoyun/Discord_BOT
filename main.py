@@ -49,5 +49,5 @@ async def on_ready():
 		
 		print("Error Accured !!")
 
-	client.run(TOKEN)
+client.run(TOKEN)
 
