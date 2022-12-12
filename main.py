@@ -19,11 +19,11 @@ async def on_ready():
 	channel = client.get_channel(1051844419105607781)
 
 	# Kafka Consumer
-	Kafka_RAW_Consumer = KafkaConsumer('RAW.Discord', bootstrap_servers="165.227.154.147:9092", group_id="Data_Consumer", auto_offset_reset='earliest', enable_auto_commit=False)
+	Kafka_Discord_Consumer = KafkaConsumer('RAW.Discord', bootstrap_servers="165.227.154.147:9092", group_id="Data_Consumer", auto_offset_reset='earliest', enable_auto_commit=False)
 
 	try:
 
-		for Message in Kafka_RAW_Consumer:
+		for Message in Kafka_Discord_Consumer:
 
 			# handle Message.
 			#Kafka_Message = Schema.IoT_Data_Pack_Model(**json.loads(Message.value.decode()))
@@ -39,7 +39,7 @@ async def on_ready():
 			await channel.send(Message)
 
 			# Commit Message
-			Kafka_RAW_Consumer.commit()
+			Kafka_Discord_Consumer.commit()
 
 			# Log
 			print("Message send to discord. \n", Message)
