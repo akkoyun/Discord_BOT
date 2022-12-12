@@ -20,7 +20,6 @@ async def on_ready():
 async def Discord_Message():
 	channel = client.get_channel(1051844419105607781)
 	await channel.send('Boot')
-	client.run(TOKEN)
 
 
 # Kafka Consumer
@@ -51,6 +50,8 @@ def Discord_Control():
 			Discord_Message()
 
 			print("--------------------------------------------------------------------------------")
+
+			client.run(TOKEN)
 
 	finally:
 		
