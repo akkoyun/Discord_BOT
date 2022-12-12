@@ -34,14 +34,15 @@ async def on_ready():
 			Device_Time = Message.headers[2][1].decode('ASCII')
 			Device_IP = Message.headers[3][1].decode('ASCII')
 
-			Message = "New Data Pack from " + str(Device_ID)
+			Message = str(Device_ID) + " kodlu cihazdan veri geldi. Komut : " + str(Command) + " (" + str(Device_Time) + ")"
 
 			await channel.send(Message)
 
 			# Commit Message
 			Kafka_RAW_Consumer.commit()
 
-			print("--------------------------------------------------------------------------------")
+			# Log
+			print("Message send to discord. Device ID : ", Device_ID)
 
 	finally:
 		
