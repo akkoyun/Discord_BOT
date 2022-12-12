@@ -56,5 +56,5 @@ async def Discord_Control():
 
 
 # Handle All Message in Topic
-#Discord_Control()
+Discord_Control()
 
