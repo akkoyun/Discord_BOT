@@ -17,17 +17,19 @@ client = discord.Client(intents=discord.Intents.default())
 async def on_ready():
 	print(f'{client.user} has connected to Discord!')
 
+async def Discord_Message():
+	channel = client.get_channel(1051844419105607781)
+	await channel.send('Boot')
+	client.run(TOKEN)
 
 
 # Kafka Consumer
 Kafka_RAW_Consumer = KafkaConsumer('RAW.Discord', bootstrap_servers="165.227.154.147:9092", group_id="Data_Consumer", auto_offset_reset='earliest', enable_auto_commit=False)
 
-async def Discord_Control():
+def Discord_Control():
 
 	try:
 
-		channel = client.get_channel(1051844419105607781)
-		await channel.send('Boot')
 
 		for Message in Kafka_RAW_Consumer:
 
@@ -46,9 +48,9 @@ async def Discord_Control():
 			# Commit Message
 			Kafka_RAW_Consumer.commit()
 
-			print("--------------------------------------------------------------------------------")
+			Discord_Message()
 
-			client.run(TOKEN)
+			print("--------------------------------------------------------------------------------")
 
 	finally:
 		
