@@ -15,9 +15,7 @@ client = discord.Client(intents=discord.Intents.default())
 
 @client.event
 async def on_ready():
-	print(f'{client.user} has connected to Discord!')
 
-async def Discord_Message():
 	channel = client.get_channel(1051844419105607781)
 	await channel.send('Boot')
 
@@ -51,5 +49,5 @@ async def Discord_Message():
 		
 		print("Error Accured !!")
 
-client.run(TOKEN)
+	client.run(TOKEN)
 
