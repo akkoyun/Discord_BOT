@@ -15,12 +15,12 @@ client = discord.Client(intents=discord.Intents.default())
 
 @client.event
 async def on_ready():
-    print(f'{client.user} has connected to Discord!')
+	print(f'{client.user} has connected to Discord!')
+	channel = client.get_channel(1051844419105607781)
+	channel.send('test')
 
 client.run(TOKEN)
 
-channel = client.get_channel(1051844419105607781)
-channel.send('test')
 
 # Kafka Consumer
 #Kafka_RAW_Consumer = KafkaConsumer('RAW.Discord', bootstrap_servers="165.227.154.147:9092", group_id="Data_Consumer", auto_offset_reset='earliest', enable_auto_commit=False)
