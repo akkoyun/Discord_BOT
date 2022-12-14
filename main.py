@@ -19,7 +19,7 @@ bot = commands.Bot(command_prefix='!',intents=intents)
 async def on_ready():
     print(f'{client.user.name} has connected to Discord!')
 
-@bot.listen('on_message')
+@client.event
 async def on_message(message):
 	
 	if message.author == client.user:
