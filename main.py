@@ -19,11 +19,14 @@ async def on_ready():
 @client.event
 async def on_message(message):
 	
-	if message.author == client.user:
-		return
+    if message.content.startswith('STF'):
+        message.channel.send('this is an exemple')
+
+#	if message.author == client.user:
+#		return
 
 #	await message.channel.send(message.content)
-	await message.author.send('👋')
+
 
 
 client.run(TOKEN)
