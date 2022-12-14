@@ -1,14 +1,12 @@
-# Import Libraries
+# bot.py
 import os
 import discord
 from dotenv import load_dotenv
 
-# Load ENV
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 
-# Initialize Bot and Denote The Command Prefix
 client = discord.Client()
 
 @client.event
