@@ -1,5 +1,4 @@
 # Import Libraries
-from config.Config import APP_Settings
 import discord
 from dotenv import load_dotenv
 
