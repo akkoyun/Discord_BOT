@@ -25,8 +25,7 @@ async def on_message(message):
 	if message.author == client.user:
 		return
 
-	if message.content == '99!':
-		await message.channel.send('Yo')
+	await message.channel.send('Yo')
 
 
 
