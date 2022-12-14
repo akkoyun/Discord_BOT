@@ -21,29 +21,13 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.author == client.user:
-        return
+	
+	if message.author == client.user:
+		return
 
-    if message.content == '99!':
-        channel = message.channel
-        await channel.send('Say hello!')
+	await message.channel.send('Yo')
 
-        def check(m):
-            return m.content == 'hello' and m.channel == channel
+#    if message.content == '99!':
 
-        msg = await client.wait_for('message', check=check)
-        await channel.send(f'Hello {msg.author}!')
-
-@bot.command(name='99', help='Tells the bot to join the voice channel')
-async def help(message):
-
-	channel = message.channel
-	await channel.send('Say hello!')
-
-	def check(m):
-		return m.content == 'hello' and m.channel == channel
-
-	msg = await client.wait_for('message', check=check)
-	await channel.send(f'Hello {msg.author}!')
 
 client.run(TOKEN)
