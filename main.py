@@ -2,6 +2,7 @@
 import os
 import random
 import discord
+from discord.ext import commands,tasks
 from dotenv import load_dotenv
 
 # Load ENV
@@ -12,7 +13,7 @@ GUILD = str(os.getenv('DISCORD_GUILD'))
 # Initialize Bot and Denote The Command Prefix
 intents = discord.Intents().all()
 client = discord.Client(intents=discord.Intents.default())
-bot = client.Bot(command_prefix='!',intents=intents)
+bot = commands.Bot(command_prefix='!',intents=intents)
 
 @client.event
 async def on_ready():
