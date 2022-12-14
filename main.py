@@ -30,6 +30,13 @@ async def on_message(message):
         return
 
     if message.content == '99!':
-        await message.channel.send("STF")
+        channel = message.channel
+        await channel.send('Say hello!')
+
+        def check(m):
+            return m.content == 'hello' and m.channel == channel
+
+        msg = await client.wait_for('message', check=check)
+        await channel.send(f'Hello {msg.author}!')
 
 client.run(TOKEN)
