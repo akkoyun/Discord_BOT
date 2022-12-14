@@ -22,7 +22,7 @@ async def on_message(message):
 	if message.author == client.user:
 		return
 
-	await message.channel.send(message.content)
+#	await message.channel.send(message.content)
 	await message.author.send('👋')
 
 
