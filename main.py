@@ -16,7 +16,7 @@ client = discord.Client(intents=discord.Intents.default())
 async def on_ready():
     print(f'{client.user.name} has connected to Discord!')
 
-@client.event
+@client.listen('on_message')
 async def on_message(message):
 	
 	if message.author == client.user:
