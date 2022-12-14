@@ -42,13 +42,19 @@ async def on_message(message):
         await channel.send(f'Hello {msg.author}!')
 
 @bot.command(name='Help', help='Tells the bot to join the voice channel')
-async def help(ctx):
+async def help(message):
 
-    if not ctx.message.author.voice:
-        await ctx.send("{} is not connected to a voice channel".format(ctx.message.author.name))
+    if message.author == client.user:
         return
-    else:
-        channel = ctx.message.author.voice.channel
-    await channel.connect()
+
+    if message.content == '99!':
+        channel = message.channel
+        await channel.send('Say hello!')
+
+        def check(m):
+            return m.content == 'hello' and m.channel == channel
+
+        msg = await client.wait_for('message', check=check)
+        await channel.send(f'Hello {msg.author}!')
 
 client.run(TOKEN)
