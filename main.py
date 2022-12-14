@@ -1,5 +1,6 @@
 # Import Libraries
 import os
+import random
 import discord
 from dotenv import load_dotenv
 
@@ -9,8 +10,7 @@ TOKEN = str(os.getenv('DISCORD_TOKEN'))
 GUILD = str(os.getenv('DISCORD_GUILD'))
 
 # Initialize Bot and Denote The Command Prefix
-#client = discord.Client(intents=discord.Intents.default())
-client = discord.Client()
+client = discord.Client(intents=discord.Intents.default())
 
 @client.event
 async def on_ready():
@@ -22,8 +22,7 @@ async def on_message(message):
 	if message.author == client.user:
 		return
 
-	if message.content == 'STF':
-		
+	if message.content == '99!':
 		await message.channel.send('Yo')
 
 
