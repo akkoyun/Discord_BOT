@@ -5,6 +5,7 @@ from pydantic import BaseSettings
 class Settings(BaseSettings):
 
 	DISCORD_TOKEN: str
+	DISCORD_GUILD: str
 
 	class Config:
 		env_file = "config/.env"
