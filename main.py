@@ -1,6 +1,5 @@
 # Import Libraries
 import os
-import random
 import discord
 from dotenv import load_dotenv
 
@@ -10,7 +9,8 @@ TOKEN = str(os.getenv('DISCORD_TOKEN'))
 GUILD = str(os.getenv('DISCORD_GUILD'))
 
 # Initialize Bot and Denote The Command Prefix
-client = discord.Client(intents=discord.Intents.default())
+#client = discord.Client(intents=discord.Intents.default())
+client = discord.Client()
 
 @client.event
 async def on_ready():
