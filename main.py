@@ -4,9 +4,9 @@ import discord
 from dotenv import load_dotenv
 
 # Load ENV
-TOKEN = APP_Settings.DISCORD_TOKEN
-GUILD = APP_Settings.DISCORD_GUILD
-
+load_dotenv()
+TOKEN = os.getenv('DISCORD_TOKEN')
+GUILD = os.getenv('DISCORD_GUILD')
 
 # Initialize Bot and Denote The Command Prefix
 client = discord.Client(intents=discord.Intents.default())
