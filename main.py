@@ -23,7 +23,7 @@ async def on_message(message):
 		return
 
 	await message.channel.send(message.content)
-
+	await message.author.send('👋')
 
 
 client.run(TOKEN)
