@@ -2,7 +2,6 @@
 import os
 import random
 import discord
-from discord.ext import commands,tasks
 from dotenv import load_dotenv
 
 # Load ENV
@@ -11,9 +10,7 @@ TOKEN = str(os.getenv('DISCORD_TOKEN'))
 GUILD = str(os.getenv('DISCORD_GUILD'))
 
 # Initialize Bot and Denote The Command Prefix
-intents = discord.Intents().all()
 client = discord.Client(intents=discord.Intents.default())
-bot = commands.Bot(command_prefix='!',intents=intents)
 
 @client.event
 async def on_ready():
@@ -25,7 +22,7 @@ async def on_message(message):
 	if message.author == client.user:
 		return
 
-	await message.channel.send('Yo')
+	await message.channel.send(message.content)
 
 
 
