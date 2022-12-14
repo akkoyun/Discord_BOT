@@ -39,4 +39,21 @@ async def on_message(message):
         msg = await client.wait_for('message', check=check)
         await channel.send(f'Hello {msg.author}!')
 
+@client.command(name='Help', help='Tells the bot to join the voice channel')
+async def help(message):
+
+    if message.author == client.user:
+        return
+
+    if message.content == '99!':
+        channel = message.channel
+        await channel.send('Say hello!')
+
+        def check(m):
+            return m.content == 'hello' and m.channel == channel
+
+        msg = await client.wait_for('message', check=check)
+        await channel.send(f'Hello {msg.author}!')
+
+
 client.run(TOKEN)
