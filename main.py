@@ -2,6 +2,8 @@
 import os
 import random
 import discord
+from discord.ext import commands
+from discord import Status
 from dotenv import load_dotenv
 
 # Load ENV
@@ -9,24 +11,27 @@ load_dotenv()
 TOKEN = str(os.getenv('DISCORD_TOKEN'))
 GUILD = str(os.getenv('DISCORD_GUILD'))
 
+intents = discord.Intents()
+intents.members = True
+intents.presences = True
+
 # Initialize Bot and Denote The Command Prefix
-client = discord.Client(intents=discord.Intents.default())
+bot = commands.Bot(command_prefix='!', intents =intents)
+#client = discord.Client(intents=discord.Intents.default())
 
-@client.event
+@bot.event
 async def on_ready():
-    print(f'{client.user.name} has connected to Discord!')
+    await bot.change_presence(activity=discord.Game(name="Exploring the archives"))
+bot.loop.create_task(Status())
 
-@client.event
+@bot.event
 async def on_message(message):
 	
-    if message.content.startswith('STF'):
-        message.channel.send('this is an exemple')
+	if message.author.id == 1051838176685211699:
+		return
 
-#	if message.author == client.user:
-#		return
-
-#	await message.channel.send(message.content)
+	await message.channel.send(message.content)
 
 
 
-client.run(TOKEN)
+#client.run(TOKEN)
