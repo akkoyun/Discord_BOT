@@ -10,8 +10,9 @@ TOKEN = str(os.getenv('DISCORD_TOKEN'))
 GUILD = str(os.getenv('DISCORD_GUILD'))
 
 # Initialize Bot and Denote The Command Prefix
+intents = discord.Intents().all()
 client = discord.Client(intents=discord.Intents.default())
-#client = discord.Client()
+bot = client.Bot(command_prefix='!',intents=intents)
 
 @client.event
 async def on_ready():
@@ -39,7 +40,7 @@ async def on_message(message):
         msg = await client.wait_for('message', check=check)
         await channel.send(f'Hello {msg.author}!')
 
-@client.command(name='Help', help='Tells the bot to join the voice channel')
+@bot.command(name='Help', help='Tells the bot to join the voice channel')
 async def help(message):
 
     if message.author == client.user:
