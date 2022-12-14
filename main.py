@@ -20,13 +20,6 @@ async def on_ready():
     print(f'{client.user.name} has connected to Discord!')
 
 @client.event
-async def on_member_join(member):
-    await member.create_dm()
-    await member.dm_channel.send(
-        f'Hi {member.name}, welcome to my Discord server!'
-    )
-
-@client.event
 async def on_message(message):
     if message.author == client.user:
         return
@@ -41,20 +34,16 @@ async def on_message(message):
         msg = await client.wait_for('message', check=check)
         await channel.send(f'Hello {msg.author}!')
 
-@bot.command(name='Help', help='Tells the bot to join the voice channel')
+@bot.command(name='99', help='Tells the bot to join the voice channel')
 async def help(message):
 
-    if message.author == client.user:
-        return
+	channel = message.channel
+	await channel.send('Say hello!')
 
-    if message.content == '99!':
-        channel = message.channel
-        await channel.send('Say hello!')
+	def check(m):
+		return m.content == 'hello' and m.channel == channel
 
-        def check(m):
-            return m.content == 'hello' and m.channel == channel
-
-        msg = await client.wait_for('message', check=check)
-        await channel.send(f'Hello {msg.author}!')
+	msg = await client.wait_for('message', check=check)
+	await channel.send(f'Hello {msg.author}!')
 
 client.run(TOKEN)
